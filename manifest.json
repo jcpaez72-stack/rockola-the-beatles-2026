@@ -1,0 +1,10 @@
+{
+  "name": "Rockola Beatles",
+  "short_name": "Beatles",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0D47A1",
+  "theme_color": "#FFEB3B",
+  "description": "Colección Beatles - Yellow Submarine",
+  "icons": []
+}
