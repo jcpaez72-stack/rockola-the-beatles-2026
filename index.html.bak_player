@@ -418,13 +418,6 @@ function openModal(d){
     row.onclick=()=>{curIdx=i;playCurrent();};
     tl.appendChild(row);
   });
-  const ctrlBar=document.createElement('div');
-  ctrlBar.id='modal-player';
-  ctrlBar.style.cssText='margin-top:16px;padding:14px;background:rgba(0,0,0,0.35);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:24px;position:sticky;bottom:8px;backdrop-filter:blur(4px);';
-  ctrlBar.innerHTML='<button onclick="prev()" style="background:none;border:none;color:#FFD700;font-size:26px;cursor:pointer;">|◄</button>'+
-    '<button id="cplay-modal" onclick="togglePlay()" style="background:#FFD700;border:none;color:#1A4A8A;font-size:22px;cursor:pointer;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;">'+(isPlaying?'⏸':'▶')+'</button>'+
-    '<button onclick="next()" style="background:none;border:none;color:#FFD700;font-size:26px;cursor:pointer;">►|</button>';
-  tl.appendChild(ctrlBar);
   cambiarTab('canciones');
   document.getElementById('modal').classList.add('open');
 }
@@ -498,8 +491,6 @@ function prev(){if(curIdx>0){curIdx--;playCurrent();}}
 
 function updatePlayUI(){
   document.getElementById('cplay').textContent=isPlaying?'⏸':'▶';
-  const cm=document.getElementById('cplay-modal');
-  if(cm)cm.textContent=isPlaying?'⏸':'▶';
   document.getElementById('pcover').classList.toggle('playing',isPlaying);
 }
 
