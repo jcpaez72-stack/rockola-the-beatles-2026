@@ -1,3 +1,9 @@
 *.bak_movil
 *.bak
 .DS_Store
+
+*.bak_player
+*.bak_tiempo
+*.bak_bbc
+*.bak_*
+*.bak
