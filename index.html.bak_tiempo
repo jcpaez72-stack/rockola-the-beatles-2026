@@ -165,7 +165,6 @@ body { font-family:Georgia,serif; background:#0D47A1; color:#FFFDE7; padding-bot
     <div class="player-info">
       <div class="player-track" id="ptrack">Selecciona una canción</div>
       <div class="player-album" id="palbum">-</div>
-      <div class="player-time" id="ptime" style="font-size:10px;color:#FBC02D;opacity:0.8;">0:00 / 0:00</div>
     </div>
     <button class="ctrl" onclick="prev()">|◄</button>
     <button class="ctrl-play" id="cplay" onclick="togglePlay()">▶</button>
@@ -308,9 +307,7 @@ function onYouTubeIframeAPIReady(){
     onReady:()=>{ytReady=true;},
     onStateChange:e=>{
       if(e.data===YT.PlayerState.ENDED) next();
-      if(e.data===YT.PlayerState.PLAYING){isPlaying=true;updatePlayUI();
-        if(timeInterval)clearInterval(timeInterval);
-        timeInterval=setInterval(updateTime,1000);}
+      if(e.data===YT.PlayerState.PLAYING){isPlaying=true;updatePlayUI();}
       if(e.data===YT.PlayerState.PAUSED){isPlaying=false;updatePlayUI();}
     }
   }});
@@ -477,20 +474,6 @@ function mostrarLetraActual(){
   }
 }
 
-let timeInterval=null;
-function fmtTime(s){
-  if(!s||isNaN(s))return '0:00';
-  const m=Math.floor(s/60), sec=Math.floor(s%60);
-  return m+':'+(sec<10?'0':'')+sec;
-}
-function updateTime(){
-  if(player&&player.getCurrentTime&&player.getDuration){
-    const cur=player.getCurrentTime()||0;
-    const dur=player.getDuration()||0;
-    const el=document.getElementById('ptime');
-    if(el)el.textContent=fmtTime(cur)+' / '+fmtTime(dur);
-  }
-}
 function playCurrent(){
   if(curIdx<0||!currentTracks[curIdx]) return;
   const t=currentTracks[curIdx];
